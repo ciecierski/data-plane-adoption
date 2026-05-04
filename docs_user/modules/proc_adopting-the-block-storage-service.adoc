@@ -349,7 +349,7 @@ $ openstack volume backup list
 $ openstack volume create --image cirros --bootable --size 1 disk_new
 ----
 
-.. If you deployed and adopted the `cinder-backup` service, back up the previous attached volume:
+.. If you deployed and adopted the `cinder-backup` service, back up the previously attached volume:
 +
 ----
 $ openstack volume backup create <volume_name> --name <backup_name>
