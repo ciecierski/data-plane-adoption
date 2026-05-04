@@ -359,7 +359,7 @@ where:
 
 `<volume_name>`:: Specifies the volume that you want to back up.
 Replace `<volume_name>` with the volume you want to back up.
-`<backup_name>`::
+`<backup_name>`:: Specifies the name of your new backup.
 Replace `<backup_name>` with the name of your new backup.
 +
 [NOTE]
