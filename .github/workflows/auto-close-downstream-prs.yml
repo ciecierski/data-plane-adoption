@@ -1,0 +1,23 @@
+name: Close pull requests to downstream branch
+
+on:  # yamllint disable-line rule:truthy
+  pull_request_target:
+    branches:
+      - downstream
+    types: [opened, reopened]
+
+jobs:
+  auto-close-downstream-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Comment and close PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --repo ${{ github.event.repository.name }} \
+            --body "The \`downstream\` branch is managed via automation. Please open pull requests against the \`main\` branch and backports against an FR branch. This PR has been automatically closed."
+          gh pr close ${{ github.event.pull_request.number }} \
+            --repo ${{ github.event.repository.name }}
