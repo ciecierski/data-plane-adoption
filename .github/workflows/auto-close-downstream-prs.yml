@@ -17,7 +17,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr comment ${{ github.event.pull_request.number }} \
-            --repo ${{ github.event.repository.name }} \
+            --repo ${{ github.repository }} \
             --body "The \`downstream\` branch is managed via automation. Please open pull requests against the \`main\` branch and backports against an FR branch. This PR has been automatically closed."
           gh pr close ${{ github.event.pull_request.number }} \
-            --repo ${{ github.event.repository.name }}
+            --repo ${{ github.repository }}
